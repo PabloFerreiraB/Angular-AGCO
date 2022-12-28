@@ -1,1 +1,16 @@
-<div>app-select</div>
+<div class="wrapper">
+  <mat-form-field appearance="outline" style=" margin-bottom: -1.25em">
+    <mat-select [(value)]="singleSelectedWithSearch">
+      <mat-form-field>
+        <mat-icon>search</mat-icon>
+        <input matInput [formControl]="searchCtrl" type="text" placeholder="Search" />
+      </mat-form-field>
+
+      <div>Não encontrado</div>
+
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

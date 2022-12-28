@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .wrapper-input {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  mat-form-field {
+    width: 300px;
+  }
+}
