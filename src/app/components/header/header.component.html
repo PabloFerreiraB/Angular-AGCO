@@ -11,9 +11,15 @@
       <h1>Logotipo</h1>
     </div>
 
-    <app-select></app-select>
+    <!-- <app-select></app-select> -->
 
-    <div>
+    <form [formGroup]="form">
+      <app-select placeholder="Dealer" formControlName="dealer" searchPlaceholder="Pesquisar..." [items]="countriesList"
+        (itemFilterServerSide)="waitForFilterResponse($event)">
+      </app-select>
+    </form>
+
+    <!-- <div>
       <div class="wrapper-buttons" *ngIf="user">
         <span class="welcome">
           Olá, <b>{{ user }}</b>
@@ -29,6 +35,6 @@
           (onClick)="onCreateAccount.emit($event)" label="Sign up">
         </app-button>
       </div>
-    </div>
+    </div> -->
   </div>
 </header>
