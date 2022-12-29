@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { BodyComponent } from './components/body/body.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,8 +17,9 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     BrowserAnimationsModule,
     HeaderComponent,
     HomeComponent,
-    // daqui em diante
+    // daqui em diantes
     SidenavComponent,
+    BodyComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
