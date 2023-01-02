@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { BodyComponent } from './components/body/body.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { BodyComponent } from './components/body/body.component';
     // daqui em diantes
     SidenavComponent,
     BodyComponent,
+    FooterComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
