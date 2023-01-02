@@ -1,4 +1,4 @@
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -38,7 +38,7 @@ import { fade, submenu } from 'src/app/animations/fade';
           *ngIf="item.items && item.items.length > 0"
         >
           <i class="subitem-link-icon fa fa-circle"></i>
-          <span class="subitem-nav-text" @fade *ngIf="collapsed">
+          <span class="subitem-nav-text" @fadeInOut *ngIf="collapsed">
             {{ item.label }}
           </span>
           <i
@@ -50,6 +50,7 @@ import { fade, submenu } from 'src/app/animations/fade';
           ></i>
         </a>
 
+        <!-- routerLink="/product/create" -->
         <a
           class="subitem-nav-link"
           *ngIf="!item.items || (item.items && item.items.length === 0)"
@@ -58,7 +59,7 @@ import { fade, submenu } from 'src/app/animations/fade';
           routerLinkActive="active-subitem"
         >
           <i class="subitem-link-icon fa fa-circle"></i>
-          <span class="subitem-nav-text" @fade *ngIf="collapsed">
+          <span class="subitem-nav-text" @fadeInOut *ngIf="collapsed">
             {{ item.label }}
           </span>
         </a>
@@ -102,5 +103,9 @@ export class SubitemMenuComponent {
     }
 
     item.expanded = !item.expanded;
+  }
+
+  getClick(data: any) {
+    console.log(data);
   }
 }

@@ -6,3 +6,13 @@
     esse quidem, cumque nostrum molestias ad corrupti fugit cupiditate fuga ipsa. Neque accusamus saepe veritatis.
   </div>
 </div>
+
+<mat-form-field appearance="outline">
+  <mat-select placeholder="Select price" [(ngModel)]="selectedValue" name="item"
+    (selectionChange)="onSelectionChange($event)">
+    <input [(ngModel)]="searchTxt" matInput placeholder="search">
+    <mat-option *ngFor="let item of items | search : searchTxt" [value]="item.value">
+      {{ item.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

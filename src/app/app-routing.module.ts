@@ -1,3 +1,4 @@
+import { CreateProductComponent } from './components/products/create-product/create-product.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -18,9 +19,18 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'products',
-    component: ProductsComponent,
+    path: 'product',
+    children: [
+      {
+        path: 'create',
+        loadComponent: () =>
+          import(
+            './components/products/create-product/create-product.component'
+          ).then((m) => m.CreateProductComponent),
+      },
+    ],
   },
+
   {
     path: 'statistics',
     component: StatisticsComponent,

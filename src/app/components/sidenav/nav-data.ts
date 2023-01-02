@@ -7,17 +7,13 @@ export const navbarData: INavbarData[] = [
     label: 'Dashboard',
   },
   {
-    routeLink: 'products',
+    routeLink: 'product',
     icon: 'fal fa-box-open',
     label: 'Products',
     items: [
       {
-        routeLink: 'product/list',
-        label: 'List Products',
-      },
-      {
         routeLink: 'product/create',
-        label: 'Create Products',
+        label: 'Create Product',
       },
     ],
   },
