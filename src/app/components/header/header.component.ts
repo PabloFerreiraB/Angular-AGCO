@@ -1,11 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonComponent } from '../button/button.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { SearchPipe } from 'src/app/pipes/search.pipe';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-header',
@@ -27,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
     SearchPipe,
     MatIconModule,
     FormsModule,
+    MatTooltipModule,
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],

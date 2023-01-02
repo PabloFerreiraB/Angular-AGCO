@@ -14,6 +14,7 @@ import { navbarData } from './nav-data';
 import { SubitemMenuComponent } from './subitem-menu.component';
 import { fade } from 'src/app/animations/fade';
 
+import { MatTooltipModule } from '@angular/material/tooltip';
 interface SideNavToggle {
   screenWidth: number;
   collapsed: boolean;
@@ -22,7 +23,7 @@ interface SideNavToggle {
 @Component({
   selector: 'app-sidenav',
   standalone: true,
-  imports: [CommonModule, RouterModule, SubitemMenuComponent],
+  imports: [CommonModule, RouterModule, MatTooltipModule, SubitemMenuComponent],
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
   animations: [fade],

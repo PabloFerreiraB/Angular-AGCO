@@ -1,7 +1,8 @@
 <header class="header" [ngClass]="getHeaderClass()">
   <div class="header-content">
 
-    <mat-form-field appearance="outline" floatLabel='always' style="width: 300px;">
+    <mat-form-field appearance="outline" floatLabel='always' style="width: 300px;" matTooltip="Select Dealer"
+      [matTooltipPosition]="'above'">
       <mat-label>Dealer</mat-label>
       <mat-select [(ngModel)]="selectedValue" name="item" (selectionChange)="onSelectionChange($event)">
         <div class="search">

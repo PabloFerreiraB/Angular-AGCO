@@ -1,14 +1,16 @@
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { INavbarData } from './helper';
 import { fade, submenu } from 'src/app/animations/fade';
 
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 @Component({
   selector: 'app-subitem-menu',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, MatTooltipModule],
   template: `
     <ul
       class="subitem-nav"
@@ -36,6 +38,8 @@ import { fade, submenu } from 'src/app/animations/fade';
           class="subitem-nav-link"
           (click)="handleClick(item)"
           *ngIf="item.items && item.items.length > 0"
+          matTooltip="{{ item.label }}"
+          [matTooltipPosition]="'right'"
         >
           <i class="subitem-link-icon fa fa-circle"></i>
           <span class="subitem-nav-text" @fadeInOut *ngIf="collapsed">
@@ -57,6 +61,8 @@ import { fade, submenu } from 'src/app/animations/fade';
           [routerLink]="['item.routeLink']"
           [routerLinkActiveOptions]="{ exact: true }"
           routerLinkActive="active-subitem"
+          matTooltip="{{ item.label }}"
+          [matTooltipPosition]="'right'"
         >
           <i class="subitem-link-icon fa fa-circle"></i>
           <span class="subitem-nav-text" @fadeInOut *ngIf="collapsed">
