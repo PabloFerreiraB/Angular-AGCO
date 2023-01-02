@@ -6,6 +6,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 import { SearchPipe } from 'src/app/pipes/search.pipe';
 
@@ -18,6 +19,7 @@ import { SearchPipe } from 'src/app/pipes/search.pipe';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+    MatIconModule,
     SearchPipe,
   ],
   templateUrl: './dashboard.component.html',

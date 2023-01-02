@@ -11,13 +11,20 @@
       <h1>Logotipo</h1>
     </div>
 
-    <!-- <app-select></app-select> -->
-
-    <form [formGroup]="form">
-      <app-select placeholder="Dealer" formControlName="dealer" searchPlaceholder="Pesquisar..." [items]="countriesList"
-        (itemFilterServerSide)="waitForFilterResponse($event)">
-      </app-select>
-    </form>
+    <mat-form-field appearance="outline" floatLabel='always'>
+      <mat-label>Dealer</mat-label>
+      <mat-select [(ngModel)]="selectedValue" name="item" (selectionChange)="onSelectionChange($event)">
+        <div class="search">
+          <mat-form-field style=" margin-bottom: -1.25em">
+            <input matInput [(ngModel)]="searchTxt" placeholder="search">
+            <mat-icon matSuffix (click)="searchTxt = ''">clear</mat-icon>
+          </mat-form-field>
+        </div>
+        <mat-option *ngFor="let item of items | search : searchTxt" [value]="item.value">
+          {{ item.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <!-- <div>
       <div class="wrapper-buttons" *ngIf="user">

@@ -7,10 +7,15 @@
   </div>
 </div>
 
-<mat-form-field appearance="outline">
-  <mat-select placeholder="Select price" [(ngModel)]="selectedValue" name="item"
-    (selectionChange)="onSelectionChange($event)">
-    <input [(ngModel)]="searchTxt" matInput placeholder="search">
+<mat-form-field appearance="outline" floatLabel='always'>
+  <mat-label>Dealer</mat-label>
+  <mat-select [(ngModel)]="selectedValue" name="item" (selectionChange)="onSelectionChange($event)">
+    <div class="search">
+      <mat-form-field style=" margin-bottom: -1.25em">
+        <input matInput [(ngModel)]="searchTxt" placeholder="search">
+        <mat-icon matSuffix (click)="searchTxt = ''">clear</mat-icon>
+      </mat-form-field>
+    </div>
     <mat-option *ngFor="let item of items | search : searchTxt" [value]="item.value">
       {{ item.viewValue }}
     </mat-option>

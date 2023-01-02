@@ -1,12 +1,18 @@
-import { Observable } from 'rxjs';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 import { ButtonComponent } from '../button/button.component';
-import { SelectComponent } from '../select/select.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { SearchPipe } from 'src/app/pipes/search.pipe';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
@@ -14,45 +20,63 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ButtonComponent,
-    SelectComponent,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatSelectModule,
+    SearchPipe,
+    MatIconModule,
+    FormsModule,
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   @Input() user!: string;
+
   @Output() onLogin = new EventEmitter<Event>();
   @Output() onLogout = new EventEmitter<Event>();
   @Output() onCreateAccount = new EventEmitter<Event>();
 
-  form!: FormGroup;
-  countriesList: any = [
-    { id: 'steak-0', name: 'Steak' },
-    { id: 'pizza-1', name: 'Pizza' },
-    { id: 'tacos-2', name: 'Tacos' },
+  selectedValue: any;
+  searchTxt!: string;
+
+  items = [
+    {
+      value: 100,
+      viewValue: 100,
+    },
+    {
+      value: 200,
+      viewValue: 200,
+    },
+    {
+      value: 300,
+      viewValue: 300,
+    },
+    {
+      value: 310,
+      viewValue: 310,
+    },
+    {
+      value: 600,
+      viewValue: 600,
+    },
+    {
+      value: 500,
+      viewValue: 500,
+    },
+    {
+      value: 310,
+      viewValue: 310,
+    },
+    {
+      value: 150,
+      viewValue: 150,
+    },
   ];
 
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.initialForm();
-  }
-
-  waitForFilterResponse(value: string) {
-    this.getCountryList({ name: value });
-  }
-
-  private getCountryList(params: object = {}): void {
-    // params will be converted in url query params ?name={{value}}
-    // this.countriesList = this.geoService.countryList(params);
-  }
-
-  private initialForm(): void {
-    this.form = this.fb.group({
-      dealer: [''],
-    });
+  onSelectionChange($event: any) {
+    console.log(event);
   }
 }
