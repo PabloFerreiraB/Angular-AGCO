@@ -1,50 +1,39 @@
-.wrapper {
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+.header {
+  width: calc(100% - 5rem);
+  margin-left: 5rem;
+  z-index: 1;
+  transition: all 0.5s ease;
+  background: #f4f7fa;
 
-svg {
-  display: inline-block;
-  vertical-align: top;
-}
+  position: fixed;
+  top: 0;
 
-h1 {
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 1;
-  margin: 6px 0 6px 10px;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.wrapper-buttons {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-
-  button + button {
-    margin-left: 10px;
-  }
-
-  .welcome {
-    color: #333;
-    font-size: 14px;
-    margin-right: 10px;
+  .header-content {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 3rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 #22292f1a;
   }
 }
 
-::ng-deep .mat-mdc-text-field-wrapper:first-of-type {
+.header-trimmed {
+  width: calc(100% - 16.5625rem);
+  margin-left: 16.5625rem;
+}
+
+.header-md-screen {
+  width: calc(100% - 5rem);
+  margin-left: 5rem;
+}
+
+// SELECT
+::ng-deep .mat-mdc-form-field-bottom-align::before {
+  display: none !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
   padding-right: 16px !important;
-}
-
-::ng-deep mat-optgroup > span {
-  padding: 0 !important;
-  display: flex;
-  justify-content: space-between;
 }
 
 ::ng-deep .mat-mdc-form-field-icon-suffix > .mat-icon {

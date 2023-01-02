@@ -1,4 +1,3 @@
-<p>dashboard works!</p>
 <div class="card">
   <div class="card-head">Lorem ipsum - Dashboard.</div>
   <div class="card-body">
@@ -7,17 +6,18 @@
   </div>
 </div>
 
-<mat-form-field appearance="outline" floatLabel='always'>
-  <mat-label>Dealer</mat-label>
-  <mat-select [(ngModel)]="selectedValue" name="item" (selectionChange)="onSelectionChange($event)">
-    <div class="search">
-      <mat-form-field style=" margin-bottom: -1.25em">
-        <input matInput [(ngModel)]="searchTxt" placeholder="search">
-        <mat-icon matSuffix (click)="searchTxt = ''">clear</mat-icon>
-      </mat-form-field>
-    </div>
-    <mat-option *ngFor="let item of items | search : searchTxt" [value]="item.value">
-      {{ item.viewValue }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<div class="card">
+  <div class="card-head">Lorem ipsum - Dashboard.</div>
+  <div class="card-body">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet consectetur quam explicabo accusantium adipisci soluta
+    esse quidem, cumque nostrum molestias ad corrupti fugit cupiditate fuga ipsa. Neque accusamus saepe veritatis.
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">Lorem ipsum - Dashboard.</div>
+  <div class="card-body">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet consectetur quam explicabo accusantium adipisci soluta
+    esse quidem, cumque nostrum molestias ad corrupti fugit cupiditate fuga ipsa. Neque accusamus saepe veritatis.
+  </div>
+</div>

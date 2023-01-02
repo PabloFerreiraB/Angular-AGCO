@@ -32,7 +32,8 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input() user!: string;
+  @Input() collapsed = false;
+  @Input() screenWidth = 0;
 
   @Output() onLogin = new EventEmitter<Event>();
   @Output() onLogout = new EventEmitter<Event>();
@@ -78,5 +79,17 @@ export class HeaderComponent {
 
   onSelectionChange($event: any) {
     console.log(event);
+  }
+
+  getHeaderClass(): string {
+    let styleClass = '';
+
+    if (this.collapsed && this.screenWidth > 768) {
+      styleClass = 'header-trimmed';
+    } else {
+      styleClass = 'header-md-screen';
+    }
+
+    return styleClass;
   }
 }

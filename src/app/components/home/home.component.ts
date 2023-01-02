@@ -10,18 +10,4 @@ import { HeaderComponent } from '../header/header.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
-  user!: string;
-
-  doLogout() {
-    this.user = '';
-  }
-
-  doLogin() {
-    this.user = 'Jane Doe';
-  }
-
-  doCreateAccount() {
-    this.user = 'Jane Doe';
-  }
-}
+export class HomeComponent {}
