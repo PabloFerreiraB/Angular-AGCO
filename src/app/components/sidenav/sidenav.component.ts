@@ -6,6 +6,7 @@ import {
   EventEmitter,
   OnInit,
   HostListener,
+  Input,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -29,45 +30,16 @@ interface SideNavToggle {
   animations: [fade],
 })
 export class SidenavComponent implements OnInit {
-  @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
+  @Input() collapsed = false;
+  @Input() screenWidth = 0;
 
-  collapsed = false;
-  screenWidth = 0;
   navData = navbarData;
   multiple = false;
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.screenWidth = window.innerWidth;
-    if (this.screenWidth <= 768) {
-      this.collapsed = false;
-      this.onToggleSideNav.emit({
-        collapsed: this.collapsed,
-        screenWidth: this.screenWidth,
-      });
-    }
-  }
 
   constructor(public router: Router) {}
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
-  }
-
-  toggleCollapse(): void {
-    this.collapsed = !this.collapsed;
-    this.onToggleSideNav.emit({
-      collapsed: this.collapsed,
-      screenWidth: this.screenWidth,
-    });
-  }
-
-  closeSidenav(): void {
-    this.collapsed = false;
-    this.onToggleSideNav.emit({
-      collapsed: this.collapsed,
-      screenWidth: this.screenWidth,
-    });
   }
 
   handleClick(item: INavbarData): void {

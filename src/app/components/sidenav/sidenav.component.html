@@ -1,19 +1,4 @@
 <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
-
-  <div class="logo-container">
-    <button class="logo" (click)="toggleCollapse()" [matTooltip]="collapsed ? 'Close menu' : 'Open menu'"
-      [matTooltipPosition]="'right'">
-      <i class="fa fa-bars" aria-hidden="true"></i>
-    </button>
-
-    <div class="logo-text" @fadeInOut *ngIf="collapsed">Logotipo</div>
-
-    <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()" matTooltip="Close menu"
-      [matTooltipPosition]="'right'">
-      <i class="fal fa-times close-icon"></i>
-    </button>
-  </div>
-
   <div class="scrollwrap scrollwrap_delayed">
     <ul class="sidenav-nav">
       <li class="sidenav-nav-item" *ngFor="let data of navData">

@@ -1,6 +1,5 @@
-<header class="header" [ngClass]="getHeaderClass()">
-  <div class="header-content">
-
+<header class="header">
+  <div class="header-dealer">
     <mat-form-field appearance="outline" floatLabel='always' style="width: 300px;" matTooltip="Select Dealer"
       [matTooltipPosition]="'above'">
       <mat-label>Dealer</mat-label>
@@ -16,5 +15,22 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+  </div>
+
+  <div class="header-content">
+    <div class="menu">
+      <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()" [matTooltip]="collapsed ? 'Close menu' : 'Open menu'"
+          [matTooltipPosition]="'right'">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <img *ngIf="screenWidth > 768" src="assets/angular.png" alt="Logotipo" width="200">
+    </div>
+
+    <div>texto</div>
+
+    <div *ngIf="false">select opcional</div>
   </div>
 </header>

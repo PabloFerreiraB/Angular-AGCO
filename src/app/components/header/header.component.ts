@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -9,6 +9,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { SearchPipe } from 'src/app/pipes/search.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { INavbarData } from '../sidenav/helper';
+import { Router } from '@angular/router';
+import { navbarData } from '../sidenav/nav-data';
+
+interface SideNavToggle {
+  screenWidth: number;
+  collapsed: boolean;
+}
 
 @Component({
   selector: 'app-header',
@@ -29,16 +37,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input() collapsed = false;
-  @Input() screenWidth = 0;
+  @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
 
-  @Output() onLogin = new EventEmitter<Event>();
-  @Output() onLogout = new EventEmitter<Event>();
-  @Output() onCreateAccount = new EventEmitter<Event>();
+  collapsed = false;
+  screenWidth = 0;
+  navData = navbarData;
+  multiple = false;
 
   selectedValue: any;
   searchTxt!: string;
-
   items = [
     {
       value: 100,
@@ -74,19 +81,60 @@ export class HeaderComponent {
     },
   ];
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.screenWidth = window.innerWidth;
+    if (this.screenWidth <= 768) {
+      this.collapsed = false;
+      this.onToggleSideNav.emit({
+        collapsed: this.collapsed,
+        screenWidth: this.screenWidth,
+      });
+    }
+  }
+
+  constructor(public router: Router) {}
+
+  ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
+  }
+
   onSelectionChange($event: any) {
     console.log(event);
   }
 
-  getHeaderClass(): string {
-    let styleClass = '';
+  toggleCollapse(): void {
+    this.collapsed = !this.collapsed;
+    this.onToggleSideNav.emit({
+      collapsed: this.collapsed,
+      screenWidth: this.screenWidth,
+    });
+  }
 
-    if (this.collapsed && this.screenWidth > 768) {
-      styleClass = 'header-trimmed';
-    } else {
-      styleClass = 'header-md-screen';
+  closeSidenav(): void {
+    this.collapsed = false;
+    this.onToggleSideNav.emit({
+      collapsed: this.collapsed,
+      screenWidth: this.screenWidth,
+    });
+  }
+
+  handleClick(item: INavbarData): void {
+    this.shrinkItems(item);
+    item.expanded = !item.expanded;
+  }
+
+  getActiveClass(data: INavbarData): string {
+    return this.router.url.includes(data.routeLink) ? 'active' : '';
+  }
+
+  shrinkItems(item: INavbarData): void {
+    if (!this.multiple) {
+      for (let modelItem of this.navData) {
+        if (item !== modelItem && modelItem.expanded) {
+          modelItem.expanded = false;
+        }
+      }
     }
-
-    return styleClass;
   }
 }
