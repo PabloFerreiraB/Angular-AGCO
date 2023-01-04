@@ -29,8 +29,11 @@
       <img *ngIf="screenWidth > 768" src="assets/angular.png" alt="Logotipo" width="200">
     </div>
 
-    <div>texto</div>
+    <div class="header-text">texto</div>
 
-    <div *ngIf="false">select opcional</div>
+    <ng-container class="header-select" *ngIf="true; else divEmpty">select opcional</ng-container>
+    <ng-template #divEmpty>
+      <div></div>
+    </ng-template>
   </div>
 </header>
